@@ -1,0 +1,16 @@
+<a (click)="toggleFormVisibility()" class="update-tags">[Modifier les tags]</a>&nbsp;
+<span *ngIf="tagsHaveChanged" (click)="clearStatus()">
+  <i *ngIf="isSuccess" class="fa-solid fa-check fa-xs" style="color: #008040;"></i>
+  <i *ngIf="isFail" class="fa-solid fa-xmark fa-xs" style="color: #ff0000;"></i>
+</span>
+<div *ngIf="isFormVisible">
+  <form (ngSubmit)="onSubmit()">
+<!--    <div class="form-group">-->
+    <div class="mb-2 mt-2 input-group input-group-sm w-75">
+      <input type="text" class="form-control" id="tags" name="tags" [(ngModel)]="tags" required>
+    </div>
+    <div class="input-group input-group-sm w-25">
+      <button type="submit" class="btn btn-outline-secondary btn-sm">Modifier les tags</button>
+    </div>
+  </form>
+</div>

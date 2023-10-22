@@ -1,0 +1,16 @@
+<img
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  [src]="imageSource"
+  alt="Gif with tags: {{tags}}"
+  class="float-right img-thumbnail"
+>
+
+<div class="image-preview-container" *ngIf="showImage">
+  <img
+       [src]="imageTarget"
+       alt="Preview"
+       class="image-preview"
+  >
+
+</div>

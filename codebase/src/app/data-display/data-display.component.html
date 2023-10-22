@@ -1,0 +1,46 @@
+<div *ngIf="data">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="Search" class="text-center mb-4">
+          {{data['hydra:totalItems']}} gif{{ data['hydra:totalItems'] > 1 ? 's' : '' }} trouvé{{ data['hydra:totalItems'] > 1 ? 's' : '' }}
+        </div>
+        <div *ngFor="let item of data['hydra:member']">
+          <div class="container box-container">
+            <div class="row">
+              <div class="col-md-6 text-end">
+                <a href="{{ item.src }}" target="_blank">
+                  <app-image-preview [imageSource]="'/thumbs/'+item.hash+'.jpg'" [imageTarget]="item.src" [tagsArray]="item.tags"></app-image-preview>
+                </a>
+              </div>
+              <div class="col-md-6">
+
+                <div class="input-group input-group-sm w-75">
+                  <span class="input-group-text"><a target="_blank" href="{{ item.src }}">
+                        <i class="fas fa-link fa-xs" title="Aller à l'adresse du gif"></i>
+                      </a></span>
+                  <input #myInput type="text" class="form-control" value="[img]{{ item.src }}[/img]" (click)="this.myInput.select()">
+                </div>
+
+                <div *ngFor="let duplicate of item.duplicates">
+                  <div class="input-group input-group-sm w-75">
+                  <span class="input-group-text"><a target="_blank" href="{{ duplicate.src }}">
+                        <i class="fas fa-link fa-xs" title="Aller à l'adresse du gif"></i>
+                      </a></span>
+                    <input #myInput type="text" class="form-control" value="[img]{{ duplicate.src }}[/img]" (click)="this.myInput.select()">
+                  </div>
+                </div>
+                <app-display-tags [tagsArray]="item.tags" [gifId]="item.id"></app-display-tags>
+                <div>Infos: {{ item.width }} x {{ item.height }}px, {{ item.size/(1024*1024) | number : '1.2-2' }} Mo, <a routerLink="/gif/{{ item.id }}">#{{ item.id }}</a></div>
+                <div *ngIf="item.stats" >Première utilisation par: <a routerLink="/posteur/{{ item.stats.first_use_user.username }}">{{ item.stats.first_use_user.display_name }}</a> le  {{ item.stats.first_use  | date:'dd/MM/yyyy à HH:mm:ss'}}</div>
+                <div *ngIf="item.stats">Dernière utilisation par: <a routerLink="/posteur/{{ item.stats.last_use_user.username }}">{{ item.stats.last_use_user.display_name }}</a> le  {{ item.stats.last_use  | date:'dd/MM/yyyy à HH:mm:ss' }}</div>
+                <div *ngIf="item.stats">Utilisé {{ item.stats.count_used }} fois</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="data && data['hydra:view'] && data['hydra:view']['hydra:last']"><app-paginator [data]="data" [RouteUrl]="RouteUrl"></app-paginator></div>
+      </div>
+    </div>
+  </div>
+</div>

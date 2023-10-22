@@ -1,0 +1,37 @@
+<div class="container">
+  <div *ngIf="data">
+    <div class="row align-items-center">
+      <div class="col">&nbsp;</div>
+      <div class="col-6">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Posteur</th>
+            <th scope="col">Gifs originaux</th>
+            <th scope="col">Gifs postés</th>
+            <th scope="col">Score</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of data['hydra:member']; let i = index">
+            <th scope="row">{{i + 1 + (atPage < 2 ? 0 : (atPage * 20) - 20)}}</th>
+            <td><a routerLink="/posteur/{{item.username}}">{{item.display_name}}</a></td>
+            <td>{{item.count_orig_gifs}}</td>
+            <td>{{item.count_gifs}}</td>
+            <td>{{item.score}}</td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="3">
+              <app-paginator [data]="data" [RouteUrl]="route_url"></app-paginator>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="col">&nbsp;</div>
+    </div>
+  </div>
+</div>

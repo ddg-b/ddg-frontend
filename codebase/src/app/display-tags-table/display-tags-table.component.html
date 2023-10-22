@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="data">
+    <div class="row align-items-center">
+      <div class="col">&nbsp;</div>
+      <div class="col-6">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tag</th>
+            <th scope="col">Gifs</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of data['hydra:member']; let i = index">
+            <th scope="row">{{i + 1 + (page < 2 ? 0 : (page * 100) - 100)}}</th>
+            <td><a routerLink="/tag/{{item.tag}}">{{item.tag}}</a></td>
+            <td>{{item.count_gifs}}</td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="3">
+              <app-paginator [data]="data" [RouteUrl]="route_url"></app-paginator>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="col">&nbsp;</div>
+    </div>
+  </div>
+</div>

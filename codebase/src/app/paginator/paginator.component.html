@@ -1,0 +1,7 @@
+<nav aria-label="tag-links">
+  <ul class="pagination justify-content-center">
+    <li *ngFor="let item of paginator" class="page-item" [class.active]="item.isCurrent" [class.bg-warning]="item.isCurrent">
+      <a class="page-link" [routerLink]="getUrlTree(item.pageNumber).toString()" (click)="addQueryParam(item.pageNumber)">{{ item.pageNumber }}</a>
+    </li>
+  </ul>
+</nav>

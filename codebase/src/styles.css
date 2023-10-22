@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~node_modules/bootstrap/dist/css/bootstrap.min.css';
+.update-tags {
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: small;
+}
+.the-navbar {
+  background: black !important;
+}
+.page-item.active .page-link {
+  color: #fff !important;
+  background: black !important;
+}

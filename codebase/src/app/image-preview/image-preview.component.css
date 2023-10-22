@@ -1,0 +1,11 @@
+.image-preview-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.image-preview {
+  max-width: 300px;
+  max-height: 300px;
+}

@@ -1,0 +1,12 @@
+<div class="container">
+  <form class="row" (ngSubmit)="onSubmit()">
+    <div class="col">&nbsp;</div>
+    <div class="col-5">
+      <input type="text" class="form-control" value="" id="searchInput" [(ngModel)]="searchTerm" name="searchTerm">
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-secondary mb-3">Rechercher</button>
+    </div>
+    <div class="col">&nbsp;</div>
+  </form>
+</div>

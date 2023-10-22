@@ -1,0 +1,6 @@
+<div>Tags :
+  <span *ngFor="let tagObj of sortedTags; let last = last">
+    <span><a routerLink="/tag/{{ tagObj.tag }}">{{ tagObj.tag }}</a><span *ngIf="!last">,</span>&nbsp;</span></span>
+    <app-form-update-tags [tagsArray]="tagsArray" (formSubmitted)="updateTags($event)" [gifId]="gifId"></app-form-update-tags>
+</div>
+

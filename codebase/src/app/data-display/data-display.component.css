@@ -1,0 +1,9 @@
+.box-container {
+  margin-bottom: 10px; /* Add margin between boxes */
+  padding: 10px; /* Optional padding for each box */
+}
+/*
+div {
+  border: 1px solid white !important;
+}
+*/
